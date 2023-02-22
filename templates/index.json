@@ -1,0 +1,172 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "disabled": true,
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 28,
+        "padding_bottom": 36
+      }
+    },
+    "f432f64c-a835-43f6-a211-9e15d75ff8f0": {
+      "type": "lookbook",
+      "blocks": {
+        "1271c411-1802-473d-9529-096a3c8ed0ff": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "model-3",
+            "showCompare": true,
+            "productTitle": "#121212",
+            "productPrice": "#f35b51",
+            "productComparePrice": "#121212",
+            "productSubtitle": "#1e1e20"
+          }
+        },
+        "22bb2cfa-c4e4-4f08-8bb2-c26c956682ce": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "model-2",
+            "showCompare": true,
+            "productTitle": "#121212",
+            "productPrice": "#f35b51",
+            "productComparePrice": "#121212",
+            "productSubtitle": "#1e1e20"
+          }
+        },
+        "725050a2-0be0-43bf-945f-28a3445e0683": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "model-4",
+            "showCompare": true,
+            "productTitle": "#121212",
+            "productPrice": "#f35b51",
+            "productComparePrice": "#121212",
+            "productSubtitle": "#1e1e20"
+          }
+        },
+        "c0793f97-e3e1-4a66-862d-a2f18289ed3c": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "model-1",
+            "showCompare": true,
+            "productTitle": "#121212",
+            "productPrice": "#f35b51",
+            "productComparePrice": "#121212",
+            "productSubtitle": "#1e1e20"
+          }
+        },
+        "6f7b4a09-33d6-41a7-b12e-3c0026f12edc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "model-3",
+            "showCompare": true,
+            "productTitle": "#121212",
+            "productPrice": "#f35b51",
+            "productComparePrice": "#121212",
+            "productSubtitle": "#1e1e20"
+          }
+        },
+        "6a4d0ba9-01c8-4596-979e-28991c24faf7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "model-1",
+            "showCompare": true,
+            "productTitle": "#121212",
+            "productPrice": "#f35b51",
+            "productComparePrice": "#121212",
+            "productSubtitle": "#1e1e20"
+          }
+        }
+      },
+      "block_order": [
+        "1271c411-1802-473d-9529-096a3c8ed0ff",
+        "22bb2cfa-c4e4-4f08-8bb2-c26c956682ce",
+        "725050a2-0be0-43bf-945f-28a3445e0683",
+        "c0793f97-e3e1-4a66-862d-a2f18289ed3c",
+        "6f7b4a09-33d6-41a7-b12e-3c0026f12edc",
+        "6a4d0ba9-01c8-4596-979e-28991c24faf7"
+      ],
+      "settings": {
+        "sectionBg": "#f3f3f3",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "heading": "Lookbook",
+        "headingAlignment": "center",
+        "headingColor": "#000000"
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "f432f64c-a835-43f6-a211-9e15d75ff8f0"
+  ]
+}

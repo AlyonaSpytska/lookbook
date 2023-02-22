@@ -1,0 +1,322 @@
+{{ 'lookbook.css' | asset_url | stylesheet_tag }}
+
+<div id="lookbook" class="lookbook" aria-label="Lookbook section" style="background-color:{{section.settings.sectionBg}}">
+  <div class="page-width">
+    <h1 
+      style="text-align:{{section.settings.headingAlignment}}; color:{{section.settings.headingColor}}" 
+      role="heading" 
+      tabindex="0"
+      aria-level="1">{{section.settings.heading}}
+    </h1>
+    <ul class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"  tabindex="0">
+      {%- for block in section.blocks -%}
+      <li class="grid__item lookbook-coll">
+        {%- if block.settings.collection.featured_image != blank -%}
+          <img
+            srcset="{%-if block.settings.collection.featured_image.width >= 165 -%}{{ block.settings.collection.featured_image | img_url: '165x' }}165w,{%- endif-%}
+            {%-if block.settings.collection.featured_image.width >= 330 -%}{{ block.settings.collection.featured_image | img_url: '330x' }} 330w,{%-endif-%}
+            {%-if block.settings.collection.featured_image.width >= 535 -%}{{ block.settings.collection.featured_image | img_url: '535x' }} 535w,{%-endif-%}
+            {%-if block.settings.collection.featured_image.width >= 750 -%}{{ block.settings.collection.featured_image | img_url: '750x' }} 750w,{%-endif-%}
+            {%-if block.settings.collection.featured_image.width >= 1000 -%}{{ block.settings.collection.featured_image | img_url: '1000x' }} 1000w{%-endif-%}
+            {%-if block.settings.collection.featured_image.width >= 1500 -%}{{ block.settings.collection.featured_image | img_url: '1500x' }} 1500w{%-endif-%}
+            {%-if block.settings.collection.featured_image.width >= 3000 -%}{{ block.settings.collection.featured_image | img_url: '3000x' }} 3000w{%-endif-%}
+            {{ block.settings.collection.featured_image | img_url: 'master' }} {{ block.settings.collection.featured_image.width }}w"
+              src="{{ block.settings.collection.featured_image | img_url: '1500x' }}"
+              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns }}px,(min-width: 750px) {% if section.blocks.size > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %}, calc(100vw - 3rem)"
+              alt="{{ block.settings.collection.title | escape }}"
+              height="{{ block.settings.collection.featured_image.height }}"
+              width="{{ block.settings.collection.featured_image.width }}" 
+              loading="lazy" 
+              tabindex="0"
+              data-modal-id="{{block.id}}">
+        {%- endif -%}
+          <div class="modal" id="{{block.id}}" role="dialog" aria-labelledby="{{block.id}}-label" aria-modal="true">
+            <div class="modal-content">
+              <div class="modal-contentWrap">
+                {%- if block.settings.collection.featured_image != blank -%}
+                  <div class="modal-content__collectionImg" tabindex="0"> 
+                    <img
+                      srcset="{%-if block.settings.collection.featured_image.width >= 165 -%}{{ block.settings.collection.featured_image | img_url: '165x' }}165w,{%- endif-%}
+                      {%-if block.settings.collection.featured_image.width >= 330 -%}{{ block.settings.collection.featured_image | img_url: '330x' }} 330w,{%-endif-%}
+                      {%-if block.settings.collection.featured_image.width >= 535 -%}{{ block.settings.collection.featured_image | img_url: '535x' }} 535w,{%-endif-%}
+                      {%-if block.settings.collection.featured_image.width >= 750 -%}{{ block.settings.collection.featured_image | img_url: '750x' }} 750w,{%-endif-%}
+                      {%-if block.settings.collection.featured_image.width >= 1000 -%}{{ block.settings.collection.featured_image | img_url: '1000x' }} 1000w{%-endif-%}
+                      {%-if block.settings.collection.featured_image.width >= 1500 -%}{{ block.settings.collection.featured_image | img_url: '1500x' }} 1500w{%-endif-%}
+                      {%-if block.settings.collection.featured_image.width >= 3000 -%}{{ block.settings.collection.featured_image | img_url: '3000x' }} 3000w{%-endif-%}
+                      {{ block.settings.collection.featured_image | img_url: 'master' }} {{ block.settings.collection.featured_image.width }}w"
+                      src="{{ block.settings.collection.featured_image | img_url: '1500x' }}"
+                      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns }}px,(min-width: 750px) {% if section.blocks.size > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %}, calc(100vw - 3rem)"
+                      alt="{{ block.settings.collection.title | escape }}"
+                      height="{{ block.settings.collection.featured_image.height }}"
+                      width="{{ block.settings.collection.featured_image.width }}" 
+                      loading="lazy" 
+                      aria-label="{{ block.settings.collection.title | escape }}"
+                      aria-describedby="modal-description"
+                      role="button"
+                      class="">
+                    </div>
+                {%- endif -%}
+                <div class="modal-content__collectionProd" role="region" aria-label="{{ block.settings.collection.title | escape }}">
+                  {% for product in block.settings.collection.products %}
+                      <div class="product" tabindex="0">
+                        <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                        <div class="productInfo">
+                          <div class="productTop">
+                            <h3 style="{{block.settings.productTitle}}" tabindex="0">{{ product.title }}</h3>
+                            <div class="productPrice">
+                              {% if product.price != blank %}
+                                <span {% if product.compare_at_price != blank %}style="color:{{block.settings.productPrice}}"{% endif %} tabindex="0">{{ product.price | money_with_currency }}</span>
+                              {% endif %}
+                              {% if product.compare_at_price != blank and block.settings.showCompare %}
+                                <span style="text-decoration: line-through; color:{{block.settings.productComparePrice}}" tabindex="0">{{ product.compare_at_price | money_with_currency }}</span>
+                              {% endif %}
+                            </div>
+                          </div>
+                          <div class="productSubtitle">
+                            <p tabindex="0">{{ product.description }}</p>                       
+                              {% for product_option in product.options_with_values %}
+                                {% if product_option.name == 'Color' and product_option.values.size == 1 %}
+                                  <p tabindex="0">{{ product_option.values[0] }}</p>
+                                {% endif %}
+                              {% endfor %}
+                          </div>
+                          <div class="productBottom">
+                            {%- liquid
+                              assign product_form_id = 'quick-add-' | append: section_id | append: product.id
+                              assign qty_rules = false
+                              if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+                                assign qty_rules = true
+                              endif
+                            -%}
+                            <product-form>
+                              {%- form 'product',
+                                product,
+                                id: product_form_id,
+                                class: 'form',
+                                novalidate: 'novalidate',
+                                data-type: 'add-to-cart-form'
+                              -%}
+                                {% if product.variants.size == 1 %}
+                                  <p style="margin: 0">One Size</p>
+                                {% else %}
+                                  <div class="select">
+                                    <select
+                                    name="id"
+                                    id="Variants-{{ section.id }}"
+                                    class="select__select"
+                                    form="{{ product_form_id }}"
+                                    tabindex="0"
+                                  >
+                                    {%- for variant in product.variants -%}
+                                      <option
+                                        {% if variant == product.selected_or_first_available_variant %}
+                                          selected="selected"
+                                        {% endif %}
+                                        {% if variant.available == false %}
+                                          disabled style="font-weight:400"
+                                        {% endif %}
+                                        value="{{ variant.id }}"
+                                        tabindex="0"
+                                      >
+                                        {{ variant.title | split: ' / ' | last }}
+                                      </option>
+                                    {%- endfor -%}
+                                  </select>
+                                  {% render 'icon-caret' %}
+                                  </div>
+                                {% endif %}
+                                <input
+                                  type="hidden"
+                                  name="id"
+                                  value="{{ product.selected_or_first_available_variant.id }}"
+                                  disabled
+                                >
+                                <button
+                                  id="{{ product_form_id }}-submit"
+                                  type="submit"
+                                  name="add"
+                                  class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                                  aria-haspopup="dialog"
+                                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ product.id }}"
+                                  aria-live="polite"
+                                  data-sold-out-message="true"
+                                  {% if product.selected_or_first_available_variant.available == false %}
+                                    disabled
+                                  {% endif %}
+                                  tabindex="0"
+                                >
+                                  <span>
+                                    {%- if product.selected_or_first_available_variant.available -%}
+                                      {{ 'products.product.add_to_cart' | t }}
+                                    {%- else -%}
+                                      {{ 'products.product.sold_out' | t }}
+                                    {%- endif -%}
+                                  </span>
+                                  <span class="sold-out-message hidden">
+                                    {{ 'products.product.sold_out' | t }}
+                                  </span>
+                                  {%- if horizontal_quick_add -%}
+                                    <span class="icon-wrap">{% render 'icon-plus' %}</span>
+                                  {%- endif -%}
+                                  <div class="loading-overlay__spinner hidden">
+                                    <svg
+                                      aria-hidden="true"
+                                      focusable="false"
+                                      class="spinner"
+                                      viewBox="0 0 66 66"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                    </svg>
+                                  </div>
+                                </button>
+                              {%- endform -%}
+                            </product-form>
+                          </div>
+                        </div>
+                      </div>
+                  {% endfor%}
+                </div>
+                <button class="close-modal" aria-label="Close modal" tabindex="0">
+                    {% render 'icon-close-small' %}
+                </button>
+              </div>
+            </div>
+          </div>   
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "settings": [ 
+  {
+    "type": "color",
+    "id": "sectionBg",
+    "label": "Backgroung color",
+    "default": "#f3f3f3"
+  },
+  {
+    "type": "header",
+    "content": "Collection grid"
+  },
+  {
+    "type": "range",
+    "id": "columns_desktop",
+    "min": 1,
+    "max": 4,
+    "step": 1,
+    "default": 3,
+    "label": "t:sections.featured-collection.settings.columns_desktop.label"
+  },
+  {
+    "type": "select",
+    "id": "columns_mobile",
+    "default": "1",
+    "label": "t:sections.featured-collection.settings.columns_mobile.label",
+    "options": [
+      {
+        "value": "1",
+        "label": "t:sections.featured-collection.settings.columns_mobile.options__1.label"
+      },
+      {
+        "value": "2",
+        "label": "t:sections.featured-collection.settings.columns_mobile.options__2.label"
+      }
+    ]
+  },
+  {
+    "type": "header",
+    "content": "Heading"
+  },
+  {
+    "type": "text",
+    "id": "heading",
+    "label": "Heading"
+  },
+  {
+    "type": "select",
+    "id": "headingAlignment",
+    "label": "Position",
+    "options": [
+      {
+        "value": "left",
+        "label": "Left"
+      },
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "right",
+        "label": "Right"
+      }
+    ],
+    "default": "center"
+  },
+  {
+    "type": "color",
+    "id": "headingColor",
+    "label": "Text color",
+    "default": "#000000"
+  }
+],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "showCompare",
+          "default": true,
+          "label": "Show compare price"
+        },
+        {
+          "type": "header",
+          "content": "Products color"
+        },
+        {
+          "type": "color",
+          "id": "productTitle",
+          "label": "Title",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "productPrice",
+          "label": "Price",
+          "default": "#f35b51"
+        },
+        {
+          "type": "color",
+          "id": "productComparePrice",
+          "label": "Compare price",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "productSubtitle",
+          "label": "Subtitle",
+          "default": "#1e1e20"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook"
+    }
+  ]
+}
+{% endschema %}

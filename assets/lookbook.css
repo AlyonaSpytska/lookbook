@@ -1,0 +1,310 @@
+.lookbook h1 {
+  margin: 0;
+  padding: 15px 0;
+  font-size: 32px;
+}
+
+.lookbook-coll img {
+  width: 100%;
+  height: auto;
+}
+
+.lookbook ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-height: calc(100vh - 70px);
+  padding: 20px 10px 10px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.modal-contentWrap {
+  display: block;
+  overflow-y: auto;
+}
+
+.modal-content__collectionImg,
+.modal-content__collectionProd {
+  flex: 0 0 50%;
+}
+
+.modal-content__collectionImg {
+  display: none;
+}
+
+.modal-content__collectionProd img {
+  max-width: 160px;
+  max-height: 200px;
+  padding-right: 10px;
+}
+
+.modal-content__collectionProd .product:not(:last-child) {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #ccc;
+}
+
+.close-modal {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  border: transparent;
+  background-color: transparent;
+}
+
+.close-modal svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+
+.product {
+  display: flex;
+}
+
+.productSubtitle p {
+  margin: 10px 0;
+  font-size: 12px;
+  line-height: initial;
+}
+
+.productPrice {
+  display: flex;
+}
+
+.productPrice span {
+  font-weight: 600;
+  line-height: initial;
+  letter-spacing: initial;
+}
+
+.productPrice span:first-child {
+  margin-right: 5px;
+}
+
+.productTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.productTop h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.productBottom {
+  margin-top: auto;
+}
+
+.productBottom form {
+  display: flex;
+  flex-direction: column;
+}
+
+.select {
+  margin-bottom: 10px;
+}
+
+.select:after {
+  box-shadow: none;
+}
+
+.icon-caret {
+  width: 20px;
+  height: 8px !important;
+  right: 0 !important;
+}
+
+.productBottom form .select,
+.productBottom form select {
+  width: 55px;
+  height: 30px;
+}
+
+.productBottom form .select {
+  display: block;
+}
+
+.productBottom form .button {
+  max-width: 160px;
+  max-height: 38px;
+  min-height: 38px;
+}
+
+.select .select__select {
+  padding: 0 20px 0 10px;
+  border: 1px solid transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.select .select__select:focus {
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+.select .select__select option {
+  padding: 3px 0;
+  font-weight: 600;
+  box-shadow: none;
+  border-color: transparent;
+  color: #000;
+  background-color: #fff;
+}
+
+.select .select__select option:hover,
+.select .select__select option:checked {
+  color: #fff !important;
+  background-color: #ccc !important;
+}
+
+.select:hover.select:after {
+  box-shadow: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .lookbook-coll img,
+  .close-modal {
+    cursor: pointer;
+  }
+
+  .lookbook {
+    padding: 40px 0;
+  }
+
+  .lookbook h1 {
+    padding: 0;
+    font-size: 60px;
+  }
+
+  .lookbook-coll {
+    width: 100%;
+    max-width: 33%;
+    padding: 10px;
+  }
+
+  .lookbook-coll img {
+    height: 100%;
+  }
+
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    margin-left: 18px;
+  }
+
+  .productSubtitle p {
+    margin: 0;
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 930px;
+    height: -webkit-fill-available;
+    display: flex;
+    margin: 30px auto;
+    padding: 30px;
+    overflow-y: inherit;
+  }
+
+  .modal-contentWrap {
+    display: flex;
+  }
+
+  .modal-content__collectionImg {
+    display: block;
+    padding-right: 9px;
+  }
+
+  .modal-content__collectionProd {
+    padding-left: 9px;
+  }
+
+  .modal-content__collectionImg img {
+    height: auto;
+  }
+
+  .modal-content__collectionProd img {
+    padding-right: 0;
+  }
+
+  .modal-content__collectionProd .product:not(:last-child) {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+  }
+
+  .close-modal {
+    top: 0;
+    right: -40px;
+  }
+
+  .productPrice {
+    flex-direction: column;
+  }
+
+  .productPrice span:first-child {
+    margin-right: 0;
+  }
+
+  .productTop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .productTop h3 {
+    margin: 16px 0;
+  }
+
+  .productBottom form {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .select {
+    margin-bottom: 0;
+  }
+
+  .productBottom form .select,
+  .productBottom form select {
+    width: 70px;
+    height: 38px;
+  }
+
+  .select .select__select {
+    padding: 0 30px 0 20px;
+  }
+
+  .select select:focus {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
